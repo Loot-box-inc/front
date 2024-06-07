@@ -12,6 +12,33 @@ import user3 from "@/public/contact/user3.jpg";
 import user4 from "@/public/contact/user4.jpg";
 import user5 from "@/public/contact/user5.jpg";
 
+const userList = [
+  {
+    id: 1,
+    img: user1,
+    username: "user1",
+  },
+  {
+    id: 2,
+    img: user2,
+    username: "user2",
+  },
+  {
+    id: 3,
+    img: user3,
+    username: "user3",
+  },
+  {
+    id: 4,
+    img: user4,
+    username: "user4",
+  },
+  {
+    id: 5,
+    img: user5,
+    username: "user5",
+  },
+]
 
 const { Search } = Input;
 
@@ -73,36 +100,14 @@ export default function Tasks() {
             <Modal title="Contact List" open={isModalOpen} onCancel={handleCancel} width={350}>
               <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
               <div className="flex flex-wrap gap-4 p-4">
-                <Link href="https://t.me/share/url?url=https://lootfront.netlify.app" target="_blank">
-                  <div className="flex flex-col justify-center items-center" onClick={onShare}>
-                    <Image src={user1} width={50} height={50} alt="user1" className="rounded-full" />
-                    <span>user1</span>
-                  </div>
-                </Link>
-                <Link href="https://t.me/share/url?url=https://lootfront.netlify.app" target="_blank">
-                  <div className="flex flex-col justify-center items-center" onClick={onShare}>
-                    <Image src={user2} width={50} height={50} alt="user2" className="rounded-full" />
-                    <span>user2</span>
-                  </div>
-                </Link>
-                <Link href="https://t.me/share/url?url=https://lootfront.netlify.app" target="_blank">
-                  <div className="flex flex-col justify-center items-center" onClick={onShare}>
-                    <Image src={user3} width={50} height={50} alt="user3" className="rounded-full" />
-                    <span>user3</span>
-                  </div>
-                </Link>
-                <Link href="https://t.me/share/url?url=https://lootfront.netlify.app" target="_blank">
-                  <div className="flex flex-col justify-center items-center" onClick={onShare}>
-                    <Image src={user4} width={50} height={50} alt="user4" className="rounded-full" />
-                    <span>user4</span>
-                  </div>
-                </Link>
-                <Link href="https://t.me/share/url?url=https://lootfront.netlify.app" target="_blank">
-                  <div className="flex flex-col justify-center items-center" onClick={onShare}>
-                    <Image src={user5} width={50} height={50} alt="user5" className="rounded-full" />
-                    <span>user5</span>
-                  </div>
-                </Link>
+                {userList.map((item, index) => (
+                  <Link href="https://t.me/share/url?url=https://lootfront.netlify.app" target="_blank" key={index}>
+                    <div className="flex flex-col justify-center items-center" onClick={onShare}>
+                      <Image src={item.img} width={50} height={50} alt="user1" className="rounded-full" />
+                      <span>{item.username}</span>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </Modal>
           </>
